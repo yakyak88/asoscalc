@@ -1,0 +1,23 @@
+{
+    "manifest_version": 3,
+    "name": "My Extension",
+    "version": "1.0.0",
+    "host_permissions": ["https://www.asos.com/*"],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://www.asos.com/*"],
+            "js": ["content.js"],
+            "all_frames": true,
+            "run_at": "document_end"
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": ["webAccessibel.js"],
+            "matches": ["https://www.asos.com/*"]
+        }
+    ]
+}
