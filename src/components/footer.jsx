@@ -18,7 +18,7 @@ const Footer = () => {
         //         </div>
         //     </footer>
         // </div>
-        <footer className="text-center">
+        <footer className="text-center mb-3">
             <div className="container-fluid text-light  p-1 ">
                 <p className="fs-5 text-nowrap">
                     © 2022 Made by Yakir Daniel
