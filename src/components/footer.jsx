@@ -26,7 +26,7 @@ const Footer = () => {
                         <a
                             target={"_blank"}
                             className="  ms-3 "
-                            href="https:www.linkedin.com/in/yakir-daniel-3209a7244/"
+                            href="https://linkedin.com/in/yakir-daniel/"
                         >
                             <ion-icon name="logo-linkedin"></ion-icon>
                         </a>
