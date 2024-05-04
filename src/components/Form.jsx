@@ -10,27 +10,29 @@ const Form = () => {
 
     useEffect(() => {
         async function getCurrency() {
-            const response = await axios.get(
-                "https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/eur.json"
-            );
-            console.log(response.data);
-            const gbp = response.data.eur.gbp;
-            const ils = response.data.eur.ils;
-            const usd = response.data.eur.usd;
+            try {
+                const response = await axios.get(
+                    "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/eur.json"
+                );
+                console.log(response.data);
+                const gbp = response.data.eur.gbp;
+                const ils = response.data.eur.ils;
+                const usd = response.data.eur.usd;
+                console.log(gbp);
 
-            const ilsGbp = ils / gbp;
-            setIlToGbp(ilsGbp);
-            setUsdToGbp(gbp / usd);
-            setIlsToUsd(ils / usd);
+                const ilsGbp = ils / gbp;
+                setIlToGbp(ilsGbp);
+                setUsdToGbp(gbp / usd);
+                setIlsToUsd(ils / usd);
+            } catch (error) {
+                console.error("Failed to fetch currency data", error);
+            }
         }
         getCurrency();
-        console.log(usdToGbp);
-        console.log(ilToGbp);
-        console.log(ilsToUsd);
     }, []);
 
     return (
-        <div className="ben mt-5 text-warning  ">
+        <div className="ben mt-5 text-warning">
             <div className="text-center">
                 <h1 className="mb-5 text-warning">Asos Calculator</h1>
                 <input
@@ -52,8 +54,8 @@ const Form = () => {
                 </h1>
                 <div className="mt-5">
                     <p>Tax Limitation:</p>
-                    <p>75$ = {75 * usdToGbp.toFixed(2)} pound</p>
-                    <p>75$ = {75 * ilsToUsd.toFixed(2)} Shekels</p>
+                    <p>75$ = {(75 * usdToGbp).toFixed(2)} pounds</p>
+                    <p>75$ = {(75 * ilsToUsd).toFixed(2)} Shekels</p>
                 </div>
             </div>
         </div>
